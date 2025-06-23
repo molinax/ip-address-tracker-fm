@@ -1,0 +1,8 @@
+{
+	"trailingComma": "none",
+	"singleAttributePerLine": true,
+	"bracketSameLine": true,
+	"useTabs": true,
+	"quoteProps": "consistent",
+	"useEditorConfig": false
+}
