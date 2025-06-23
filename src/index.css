@@ -8,3 +8,9 @@
 	--font-rubik: "Rubik", sans-serif;
 	--size-text-input: 18px;
 }
+
+@layer base {
+	html {
+		@apply font-rubik;
+	}
+}
