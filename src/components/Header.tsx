@@ -1,13 +1,10 @@
-import SearchInput from "./ui/SearchInput";
+import SearchForm from "./SearchForm";
 
 const Header = () => {
 	return (
-		<header>
-			<h1>IP Address Tracker</h1>
-
-			<form>
-				<SearchInput />
-			</form>
+		<header className="content-wrapper pt-6 text-center flex flex-col gap-y-6">
+			<h1 className="text-2xl text-white font-[500]">IP Address Tracker</h1>
+			<SearchForm />
 		</header>
 	);
 };

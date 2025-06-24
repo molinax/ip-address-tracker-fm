@@ -2,8 +2,8 @@
 @import "tailwindcss";
 
 @theme {
-	--very-dark-gray: hsl(0, 0%, 17%);
-	--dark-gray: hsl(0, 0%, 59%);
+	--color-very-dark-gray: hsl(0, 0%, 17%);
+	--color-dark-gray: hsl(0, 0%, 59%);
 
 	--font-rubik: "Rubik", sans-serif;
 	--size-text-input: 18px;
@@ -12,5 +12,15 @@
 @layer base {
 	html {
 		@apply font-rubik;
+	}
+}
+
+@layer components {
+	.bg-pattern {
+		@apply bg-[url(/pattern-bg-mobile.png)] md:bg-[url(/pattern-bg-desktop.png)];
+	}
+
+	.content-wrapper {
+		@apply w-[85%] max-w-5xl mx-auto;
 	}
 }

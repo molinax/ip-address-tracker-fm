@@ -16,7 +16,7 @@ const Map = () => {
 	return (
 		<div
 			id="map"
-			className="w-full min-h-80"></div>
+			className="w-full min-h-full z-10"></div>
 	);
 };
 
