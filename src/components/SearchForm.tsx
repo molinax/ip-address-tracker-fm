@@ -1,11 +1,28 @@
+import {
+	useAddressContext,
+	type ContextProps
+} from "../context/address.context";
+import { getAddressByIpify } from "../services/address.service";
+
 const SearchForm = () => {
+	const { setAddress } = useAddressContext() as ContextProps;
+	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const addressVal = e.currentTarget.elements.namedItem("address") as HTMLInputElement;
+	
+		if (addressVal) {
+			const data = await getAddressByIpify(addressVal.value);
+			setAddress(data);
+		}
+	}
+
 	return (
-		<form className="flex">
+		<form className="flex" onSubmit={onSubmit}>
 			<input
 				type="text"
 				className="bg-white text-very-dark-gray flex-2 py-3 pl-5 pr-6 rounded-2xl border border-dark-gray outline-none"
 				placeholder="IP address"
-				name="ip-address"
+				name="address"
 			/>
 			<button
 				type="submit"

@@ -6,12 +6,12 @@
 	--color-dark-gray: hsl(0, 0%, 59%);
 
 	--font-rubik: "Rubik", sans-serif;
-	--size-text-input: 18px;
+	--text-input: 18px;
 }
 
 @layer base {
 	html {
-		@apply font-rubik;
+		@apply font-rubik text-input;
 	}
 }
 
