@@ -21,5 +21,15 @@ export interface AddressResponse {
   isp: string;
 }
 
-
-export type Address = Omit<AddressResponse, "as" | "domains">;
+export interface Address {
+  ip: string;
+  country: string;
+  region: string;
+  city: string;
+  latitude: number;
+  longitude: number;
+  postalCode: string;
+  timezone: string;
+  geonameId: number;
+  isp: string;
+}

@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import type { Address } from "../models/address.model";
 
-export interface ContextProps {
+export interface IAddressContext {
 	address: Address | null;
 	setAddress: React.Dispatch<React.SetStateAction<Address | null>>;
 }
@@ -10,7 +10,7 @@ interface ProviderProps {
 	children: React.ReactNode;
 }
 
-const AddressContext = createContext<ContextProps | null>(null);
+const AddressContext = createContext<IAddressContext | null>(null);
 
 export const AddressContextProvider = ({ children }: ProviderProps) => {
   const [address, setAddress] = useState<Address | null>(null);

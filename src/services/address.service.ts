@@ -1,4 +1,4 @@
-import { AddressAdapter } from "../adapters/address.adapter";
+import { addressAdapter } from "../adapters/address.adapter";
 import type { Address } from "../models/address.model";
 
 export const getAddressByIpify = async (address: string): Promise<Address> => {
@@ -9,5 +9,5 @@ export const getAddressByIpify = async (address: string): Promise<Address> => {
 	if (!res.ok) throw new Error("No se pudo obtener la dirección");
 
 	const data = await res.json();
-	return AddressAdapter(data);
+	return addressAdapter(data);
 };

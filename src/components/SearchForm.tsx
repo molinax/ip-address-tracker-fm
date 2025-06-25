@@ -1,11 +1,11 @@
 import {
 	useAddressContext,
-	type ContextProps
+	type IAddressContext
 } from "../context/address.context";
 import { getAddressByIpify } from "../services/address.service";
 
 const SearchForm = () => {
-	const { setAddress } = useAddressContext() as ContextProps;
+	const { setAddress } = useAddressContext() as IAddressContext;
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const addressVal = e.currentTarget.elements.namedItem("address") as HTMLInputElement;
