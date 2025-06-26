@@ -1,4 +1,5 @@
 import L from "leaflet";
+import type { LeafletContainer } from "../models/leaflet-container.model";
 
 export const generateMap = (
 	id: string,
@@ -6,6 +7,9 @@ export const generateMap = (
 	long: number,
 	zoom: number = 13
 ) => {
+	const container = L.DomUtil.get(id) as LeafletContainer;
+	if (container != null) container._leaflet_id = undefined;
+
 	const map = L.map(id, {
 		zoomControl: false
 	});

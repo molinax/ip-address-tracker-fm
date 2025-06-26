@@ -5,16 +5,11 @@ import {
 } from "../context/address.context";
 import { generateMap } from "../helpers/handleMap";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
-import type { LeafletContainer } from "../models/leaflet-container.model";
 
 const Map = () => {
 	const { address } = useAddressContext() as IAddressContext;
 
 	useEffect(() => {
-		const container = L.DomUtil.get("map") as LeafletContainer;
-		if (container != null) container._leaflet_id = undefined;
-
 		if (address) {
 			generateMap("map", address.latitude, address.longitude, 13);
 			return;
