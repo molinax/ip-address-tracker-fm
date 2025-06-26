@@ -11,7 +11,7 @@ const Main = () => {
 	return (
 		<main className="relative">
 			{address && (
-				<div className="absolute -top-25 left-1/2 -translate-x-1/2 z-20 content-wrapper">
+				<div className="absolute -top-28 left-1/2 -translate-x-1/2 z-20 content-wrapper">
 					<CardAddressInfo address={address} />
 				</div>
 			)}

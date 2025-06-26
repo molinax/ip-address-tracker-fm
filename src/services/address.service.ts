@@ -15,6 +15,6 @@ export const getAddressByIpify = async (
 
 		return addressAdapter(data);
 	} catch (error) {
-		throw new Error(`Ha ocurrido un error: ${error}`);
+		throw new Error(`Error: ${error}`);
 	}
 };
