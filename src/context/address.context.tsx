@@ -13,7 +13,7 @@ interface ProviderProps {
 const AddressContext = createContext<IAddressContext | null>(null);
 
 export const AddressContextProvider = ({ children }: ProviderProps) => {
-  const [address, setAddress] = useState<Address | null>(null);
+	const [address, setAddress] = useState<Address | null>(null);
 
 	return (
 		<AddressContext.Provider value={{ address, setAddress }}>
