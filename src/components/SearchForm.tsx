@@ -1,35 +1,15 @@
-import { useState } from "react";
-import {
-	useAddressContext,
-	type IAddressContext
-} from "../context/address.context";
-import { getAddressByIpify } from "../services/address.service";
+import useIpifyFetch from "../hooks/useIpifyFetch";
 
 const SearchForm = () => {
-	const { setAddress } = useAddressContext() as IAddressContext;
-	const [addressError, setAddressError] = useState("");
+	const { getAddressByIpify, errorMessage, isLoading } = useIpifyFetch();
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		const address = e.currentTarget.elements.namedItem(
 			"address"
 		) as HTMLInputElement;
-		const addressVal = address.value;
-		const ipRegex = /^(?:\d{1,3}\.){3}\d{1,3}$/;
-		const urlRegex =
-			/^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/\S*)?$/;
 
-		if (!ipRegex.test(addressVal) && !urlRegex.test(addressVal)) {
-			setAddressError("Invalid address");
-			return;
-		}
-
-		const data = ipRegex.test(addressVal)
-			? await getAddressByIpify(addressVal)
-			: await getAddressByIpify(undefined, addressVal);
-
-		setAddress(data);
-		setAddressError("");
+		await getAddressByIpify(address.value);
 	};
 
 	return (
@@ -39,13 +19,17 @@ const SearchForm = () => {
 			<fieldset className="flex">
 				<input
 					type="text"
-					className={`flex-2 bg-white py-3 pl-5 pr-6 rounded-2xl border ${addressError ? "text-red-400 border-red-400" : "border-dark-gray text-very-dark-gray"} outline-none`}
+					className={`flex-2 w-full bg-white py-3 pl-5 pr-10 rounded-2xl border outline-none transition-colors duration-300
+      		${errorMessage ? "text-red-400 border-red-400" : "border-dark-gray text-very-dark-gray"}
+      		${isLoading ? "animate-pulse bg-gray-400 text-gray-400 cursor-not-allowed" : ""}
+    			`}
 					placeholder="IP address or domain"
 					name="address"
+					disabled={isLoading}
 				/>
 				<button
 					type="submit"
-					className="bg-black py-4 px-5 rounded-r-2xl cursor-pointer inline-flex justify-center items-center ml-[-1rem] hover:bg-very-dark-gray focus:bg-very-dark-gray">
+					className="bg-black py-4 px-5 rounded-r-2xl cursor-pointer inline-flex justify-center items-center ml-[-1rem] hover:bg-very-dark-gray focus:bg-very-dark-gray z-10">
 					<svg
 						width="11"
 						height="14">
@@ -58,9 +42,9 @@ const SearchForm = () => {
 					</svg>
 				</button>
 			</fieldset>
-			{addressError && (
+			{errorMessage && (
 				<span className="self-start font-[500] text-sm text-red-400 pl-1">
-					{addressError}
+					{errorMessage}
 				</span>
 			)}
 		</form>

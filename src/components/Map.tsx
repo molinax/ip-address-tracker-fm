@@ -3,7 +3,7 @@ import {
 	useAddressContext,
 	type IAddressContext
 } from "../context/address.context";
-import { generateMap } from "../helpers/handleMap";
+import { generateMap } from "../helpers/generateMap.helper";
 import "leaflet/dist/leaflet.css";
 
 const Map = () => {
