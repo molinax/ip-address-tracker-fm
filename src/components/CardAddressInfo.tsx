@@ -13,25 +13,25 @@ const CardAddressInfo = ({ address }: Props) => {
 				<h4 className="font-semibold text-dark-gray uppercase tracking-wide text-xs">
 					IP Address
 				</h4>
-				<strong className="text-lg lg:text-2xl font-semibold">{ip}</strong>
+				<strong className="text-lg sm:text-2xl font-semibold">{ip}</strong>
 			</article>
 			<article className="flex flex-col gap-y-1 lg:items-start lg:border-r lg:border-r-gray-300 lg:pr-8 lg:flex-grow">
 				<h4 className="font-semibold text-dark-gray uppercase tracking-wide text-xs">
 					Location
 				</h4>
-				<strong className="text-lg lg:text-2xl font-semibold">{`${region}, ${country}`}</strong>
+				<strong className="text-lg sm:text-2xl font-semibold">{`${region}, ${country}`}</strong>
 			</article>
 			<article className="flex flex-col gap-y-1 lg:items-start lg:border-r lg:border-r-gray-300 lg:pr-8 lg:flex-grow">
 				<h4 className="font-semibold text-dark-gray uppercase tracking-wide text-xs">
 					Timezone
 				</h4>
-				<strong className="text-lg lg:text-2xl font-semibold">UTC {timezone}</strong>
+				<strong className="text-lg sm:text-2xl font-semibold">UTC {timezone}</strong>
 			</article>
 			<article className="flex flex-col gap-y-1 lg:items-start lg:pr-8 lg:flex-grow">
 				<h4 className="font-semibold text-dark-gray uppercase tracking-wide text-xs">
 					ISP
 				</h4>
-				<strong className="text-lg lg:text-2xl font-semibold">{isp || "None"}</strong>
+				<strong className="text-lg sm:text-2xl font-semibold">{isp || "None"}</strong>
 			</article>
 		</section>
 	);

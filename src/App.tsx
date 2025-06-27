@@ -3,7 +3,7 @@ import Main from "./components/Main";
 
 const App = () => {
 	return (
-		<div className="bg-pattern grid grid-rows-[35%_1fr] min-h-dvh bg-contain">
+		<div className="bg-pattern grid grid-rows-[35%_1fr] min-h-dvh bg-contain lg:grid-rows-[30%_1fr]">
 			<Header />
 			<Main />
 		</div>
