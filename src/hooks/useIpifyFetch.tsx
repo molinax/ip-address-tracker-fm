@@ -15,6 +15,7 @@ const useIpifyFetch = () => {
 		notFound: "The address not found. Try another"
 	};
 
+	
 	const getAddressByIpify = async (queryParam: string) => {
 		setIsLoading(true);
 

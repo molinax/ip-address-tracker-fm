@@ -1,5 +1,6 @@
 import L from "leaflet";
 import type { LeafletContainer } from "../models/leaflet-container.model";
+import blackMarker from "../../public/icon-location.svg";
 
 export const generateMap = (
 	id: string,
@@ -22,5 +23,10 @@ export const generateMap = (
 			'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
 
-	L.marker([lat, long]).addTo(map);
+	const markerIcon = L.icon({
+    iconUrl: blackMarker,
+    iconSize: [32, 40],
+	});
+	
+	L.marker([lat, long], {icon: markerIcon}).addTo(map);
 };

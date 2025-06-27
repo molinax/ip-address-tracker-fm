@@ -17,10 +17,14 @@
 
 @layer components {
 	.bg-pattern {
-		@apply bg-[url(/pattern-bg-mobile.png)] md:bg-[url(/pattern-bg-desktop.png)];
+		@apply bg-[url(/pattern-bg-mobile.png)] lg:bg-[url(/pattern-bg-desktop.png)];
 	}
 
-	.content-wrapper {
+	.content-wrapper-lg {
 		@apply w-[85%] max-w-5xl mx-auto;
+	}
+
+	.content-wrapper-md {
+		@apply w-[85%] max-w-xl mx-auto;
 	}
 }
