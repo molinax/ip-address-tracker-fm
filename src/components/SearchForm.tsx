@@ -1,7 +1,7 @@
 import useIpifyFetch from "../hooks/useIpifyFetch";
 
 const SearchForm = () => {
-	const { getAddressByIpify, errorMessage, isLoading } = useIpifyFetch();
+	const { getAddressFromIpify, errorMessage, isLoading } = useIpifyFetch();
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -9,7 +9,7 @@ const SearchForm = () => {
 			"address"
 		) as HTMLInputElement;
 
-		await getAddressByIpify(address.value);
+		await getAddressFromIpify(address.value);
 	};
 
 	return (
@@ -20,7 +20,7 @@ const SearchForm = () => {
 				<input
 					type="text"
 					className={`flex-2 w-full bg-white py-3 pl-5 pr-10 rounded-2xl border outline-none transition-colors duration-300
-      		${errorMessage ? "text-red-400 border-red-400" : "border-dark-gray text-very-dark-gray"}
+      		${errorMessage ? "text-red-400 border-red-400" : "border-dark-gray text-very-dark-gray focus:border-very-dark-gray"}
       		${isLoading ? "animate-pulse bg-gray-400 text-gray-400 cursor-not-allowed" : ""}
     			`}
 					placeholder="IP address or domain"

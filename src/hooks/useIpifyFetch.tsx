@@ -15,23 +15,24 @@ const useIpifyFetch = () => {
 		notFound: "The address not found. Try another"
 	};
 
-	
-	const getAddressByIpify = async (queryParam: string) => {
+	const getAddressFromIpify = async (queryParam: string) => {
 		setIsLoading(true);
+		const parseQueryParam = queryParam
+			.replace(/^https?:\/\//, "")
+			.replace(/^www\./, "");
 
 		const ipRegex = /^(?:\d{1,3}\.){3}\d{1,3}$/;
-		const urlRegex =
-			/^(https?:\/\/)?([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/\S*)?$/;
+		const urlRegex = /([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(:\d+)?(\/\S*)?$/;
 
-		if (!ipRegex.test(queryParam) && !urlRegex.test(queryParam)) {
+		if (!ipRegex.test(parseQueryParam) && !urlRegex.test(parseQueryParam)) {
 			setErrorMessage(ERROR_MESSAGES.invalid);
 			setIsLoading(false);
 			return;
 		}
 
-		const addressMethod = ipRegex.test(queryParam)
-			? `ipAddress=${queryParam}`
-			: `domain=${queryParam}`;
+		const addressMethod = ipRegex.test(parseQueryParam)
+			? `ipAddress=${parseQueryParam}`
+			: `domain=${parseQueryParam}`;
 		const API_KEY = import.meta.env.VITE_IPIFY_KEY;
 		const URL = `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&${addressMethod}`;
 
@@ -48,7 +49,7 @@ const useIpifyFetch = () => {
 		}
 	};
 
-	return { getAddressByIpify, isLoading, errorMessage };
+	return { getAddressFromIpify, isLoading, errorMessage };
 };
 
 export default useIpifyFetch;

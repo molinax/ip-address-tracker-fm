@@ -1,27 +1,23 @@
-import { useEffect } from "react";
-import {
-	useAddressContext,
-	type IAddressContext
-} from "../context/address.context";
-import { generateMap } from "../helpers/generateMap.helper";
+import { useEffect, useRef } from "react";
 import "leaflet/dist/leaflet.css";
+import { generateMap } from "../helpers/generateMap.helper";
+import type { Address } from "../models/address.model";
 
-const Map = () => {
-	const { address } = useAddressContext() as IAddressContext;
+interface Props {
+	address: Address | null;
+}
+
+const Map = ({ address }: Props) => {
+	const mapContainerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
-		if (address) {
-			generateMap("map", address.latitude, address.longitude, 13);
-			return;
-		}
-
-		const defaultPos = [51.505, -0.09];
-		const defaultZoom = 13;
-		generateMap("map", defaultPos[0], defaultPos[1], defaultZoom);
+		if (!mapContainerRef.current) return;
+		generateMap(mapContainerRef.current, address);
 	}, [address]);
 
 	return (
 		<div
+			ref={mapContainerRef}
 			id="map"
 			className="w-full min-h-full z-10"></div>
 	);
